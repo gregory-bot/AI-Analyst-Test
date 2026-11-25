@@ -1,15 +1,18 @@
-"""Step 1 – AI extraction: send both PDFs to Claude, get schema-valid JSON back."""
+"""Step 1 – AI extraction: send both PDFs to OpenAI, get schema-valid JSON back."""
 from __future__ import annotations
 
 import base64
 import json
+import os
 from pathlib import Path
 
-import anthropic
+from openai import OpenAI
 
 from .schema import Extraction
 
-MODEL = "claude-opus-5-5"
+# Model and reasoning effort are configurable in backend/.env
+MODEL = os.getenv("OPENAI_MODEL", "gpt-5.5")
+REASONING_EFFORT = os.getenv("OPENAI_REASONING_EFFORT", "medium")  # low | medium | high
 
 SYSTEM = """You are an investment analyst at AHL Venture Partners, an Africa-focused \
 private-debt investor, preparing a first-pass screening (TMS) of a company.
@@ -59,69 +62,41 @@ market_size: 1 non-essential products, single country; 3 essential products, mul
 """
 
 
-def _strict_json_schema(model: type) -> dict:
-    """Pydantic schema -> self-contained schema accepted by structured outputs."""
-    schema = model.model_json_schema()
-    defs = schema.pop("$defs", {})
-
-    def walk(node):
-        if isinstance(node, dict):
-            if "$ref" in node:
-                return walk(dict(defs[node["$ref"].split("/")[-1]]))
-            node = {k: walk(v) for k, v in node.items() if k not in ("title", "default")}
-            if node.get("type") == "object":
-                node["additionalProperties"] = False
-                node["required"] = list(node.get("properties", {}))
-            return node
-        if isinstance(node, list):
-            return [walk(n) for n in node]
-        return node
-
-    return walk(schema)
-
-
-def _pdf_block(path: Path, title: str) -> dict:
-    return {
-        "type": "document",
-        "title": title,
-        "source": {
-            "type": "base64",
-            "media_type": "application/pdf",
-            "data": base64.standard_b64encode(path.read_bytes()).decode(),
-        },
-    }
+def _pdf(path: Path, filename: str) -> dict:
+    data = base64.standard_b64encode(path.read_bytes()).decode()
+    return {"type": "input_file", "filename": filename, "file_data": f"data:application/pdf;base64,{data}"}
 
 
 def extract(memo_pdf: Path, financials_pdf: Path) -> tuple[Extraction, dict]:
-    client = anthropic.Anthropic()  # reads ANTHROPIC_API_KEY
-    with client.beta.messages.stream(
+    client = OpenAI()  # reads OPENAI_API_KEY
+    kwargs = {}
+    if MODEL.startswith(("gpt-5", "o")):  # reasoning models only
+        kwargs["reasoning"] = {"effort": REASONING_EFFORT}
+
+    response = client.responses.parse(
         model=MODEL,
-        max_tokens=64000,
-        betas=["server-side-fallback-2026-07-01"],
-        fallbacks="default",  # if a request is declined, the API retries on a fallback model
-        system=SYSTEM,
-        output_config={
-            "effort": "high",
-            "format": {"type": "json_schema", "schema": _strict_json_schema(Extraction)},
-        },
-        messages=[{
+        instructions=SYSTEM,
+        input=[{
             "role": "user",
             "content": [
-                _pdf_block(memo_pdf, "Investment Memo"),
-                _pdf_block(financials_pdf, "Audited Financial Statements and Budget"),
-                {"type": "text", "text": "Extract and assess per the schema."},
+                _pdf(memo_pdf, "investment_memo.pdf"),
+                _pdf(financials_pdf, "financial_statements.pdf"),
+                {"type": "input_text", "text": "Extract and assess per the schema."},
             ],
         }],
-    ) as stream:
-        response = stream.get_final_message()
+        text_format=Extraction,          # strict structured output from the Pydantic schema
+        max_output_tokens=64000,
+        timeout=600,
+        **kwargs,
+    )
 
-    if response.stop_reason == "refusal":
-        raise RuntimeError(f"Model declined the request: {response.stop_details}")
-    if response.stop_reason == "max_tokens":
-        raise RuntimeError("Response truncated (max_tokens) - extraction incomplete")
+    if response.status == "incomplete":
+        reason = getattr(response.incomplete_details, "reason", "unknown")
+        raise RuntimeError(f"Response incomplete ({reason}) - extraction not finished")
+    data = response.output_parsed
+    if data is None:  # refusal or unparseable output
+        raise RuntimeError(f"Model returned no structured output: {response.output_text[:300]}")
 
-    text = next(b.text for b in response.content if b.type == "text")
-    data = Extraction.model_validate_json(text)  # second, local schema check
     usage = {
         "model": response.model,
         "input_tokens": response.usage.input_tokens,

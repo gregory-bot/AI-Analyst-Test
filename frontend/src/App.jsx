@@ -64,7 +64,7 @@ export default function App() {
                 <span className="pill"><span className="dot ok" />API connected</span>
                 <span className="pill">
                   <span className={`dot ${health.api_key_configured ? 'ok' : ''}`} />
-                  {health.api_key_configured ? `Claude ready · ${health.model}` : 'No API key · demo mode only'}
+                  {health.api_key_configured ? `OpenAI ready · ${health.model}` : 'No API key · demo mode only'}
                 </span>
               </>
             )}

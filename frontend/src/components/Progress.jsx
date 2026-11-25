@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 const STEPS = [
-  ['Extract', 'Claude reads the memo and financial statements into structured data'],
+  ['Extract', 'OpenAI reads the memo and financial statements into structured data'],
   ['Validate', 'Recompute subtotals, tie the three statements together, test memo claims'],
   ['Score', 'Apply TMS thresholds to the quantitative criteria'],
   ['Populate', 'Write the screening template and audit sheets'],

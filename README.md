@@ -11,8 +11,8 @@ AI Analyst Test/
 ├── AgriWave Ltd Investment Memo.pdf                 │ case-study documents
 ├── AgriWave Ltd Audited Financial Statements…pdf    │ (also used as sample inputs)
 ├── 2025.12_Screening Template vF.xlsx               ┘
-├── backend/                      Python · FastAPI · Claude API
-│   ├── .env                      ANTHROPIC_API_KEY lives here (git-ignored)
+├── backend/                      Python · FastAPI · OpenAI API
+│   ├── .env                      OPENAI_API_KEY lives here (git-ignored)
 │   ├── api.py                    REST API used by the frontend
 │   ├── run.py                    same pipeline from the command line
 │   ├── src/                      extract → validate → score → populate
@@ -26,7 +26,7 @@ AI Analyst Test/
 
 | Step | Engine | What happens |
 |---|---|---|
-| 1. Extract | **Claude** (`claude-opus-5-5`) | Reads both PDFs and returns schema-checked JSON. It copies figures exactly as printed, gives a source for each memo fact, and scores the 13 judgement criteria against the TMS guide. |
+| 1. Extract | **OpenAI** (`gpt-5.5`, configurable) | Reads both PDFs via the Responses API and returns JSON in a strict schema (Structured Outputs from the Pydantic model). It copies figures exactly as printed, gives a source for each memo fact, and scores the 13 judgement criteria against the TMS guide. |
 | 2. Validate | Rules (Python) | 112 checks: subtotals, links between the P&L, balance sheet and cash flow, the memo's financial table against the statements, the memo's claims against AHL's Country Gating Screen, and the plausibility of the loan-book yield. |
 | 3. Score | Rules (Python) | Scores revenue growth, profitability, unit profitability, capital efficiency and use of leverage using the template's own thresholds. |
 | 4. Populate | openpyxl + YAML map | Fills the template, fixes 5 template bugs, and adds *Extraction Log*, *Validation Flags* and *Automation Notes* sheets. |
@@ -35,14 +35,14 @@ The AI only reads documents and makes judgements. All arithmetic is done by dete
 
 ## Quick start
 
-**Requirements:** Python 3.10 or later, Node 18 or later, and an Anthropic API key (optional; without one, only demo mode works).
+**Requirements:** Python 3.10 or later, Node 18 or later, and an OpenAI API key (optional; without one, only demo mode works). Create one at https://platform.openai.com/api-keys and add billing credit at https://platform.openai.com/settings/organization/billing.
 
 ### 1. Backend (port 8000)
 ```bash
 cd backend
 python3 -m venv .venv
 .venv/bin/pip install -r requirements.txt
-# put your key in backend/.env →  ANTHROPIC_API_KEY=sk-ant-...
+# put your key in backend/.env →  OPENAI_API_KEY=sk-...
 .venv/bin/uvicorn api:app --port 8000
 ```
 
@@ -54,7 +54,7 @@ npm run dev
 ```
 Open **http://localhost:5173**, upload the memo and financials (or tick *Use the sample AgriWave documents*), and click **Run screening**.
 
-**Live** mode calls Claude and takes about 1–2 minutes. **Demo** mode replays a saved, hand-checked AgriWave extraction, so it needs no API key and finishes in seconds. Steps 2–4 run in full in both modes.
+**Live** mode calls OpenAI and takes about 1–2 minutes. **Demo** mode replays a saved, hand-checked AgriWave extraction, so it needs no API key and finishes in seconds. Steps 2–4 run in full in both modes.
 
 ### Command line (no frontend)
 ```bash
@@ -68,7 +68,9 @@ cd backend
 
 | File | Variable | Purpose |
 |---|---|---|
-| `backend/.env` | `ANTHROPIC_API_KEY` | Claude API key (required for live mode) |
+| `backend/.env` | `OPENAI_API_KEY` | OpenAI API key (required for live mode) |
+| `backend/.env` | `OPENAI_MODEL` | Extraction model, default `gpt-5.5` (needs PDF input + structured outputs) |
+| `backend/.env` | `OPENAI_REASONING_EFFORT` | `low` / `medium` / `high` for reasoning models (default `medium`) |
 | `backend/.env` | `ALLOWED_ORIGINS` | Origins allowed to call the API (default `http://localhost:5173`) |
 | `frontend/.env` | `BACKEND_URL` | Where the dev server proxies `/api` (default `http://127.0.0.1:8000`) |
 | `frontend/.env` | `VITE_API_URL` | Optional: call a deployed backend directly |

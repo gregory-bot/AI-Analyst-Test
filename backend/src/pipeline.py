@@ -32,7 +32,7 @@ CRITERIA = {
     "use_of_leverage": ("Use of Leverage", "Ability to Scale"), "market_size": ("Market Size", "Ability to Scale"),
 }
 WEIGHTS = {"Team": 0.35, "Business Model": 0.50, "Ability to Scale": 0.15}
-STEPS = ["Extract (Claude)", "Validate", "Score", "Populate template"]
+STEPS = ["Extract (OpenAI)", "Validate", "Score", "Populate template"]
 
 
 def run_pipeline(memo: Path, financials: Path, template: Path, out_dir: Path,
@@ -47,7 +47,7 @@ def run_pipeline(memo: Path, financials: Path, template: Path, out_dir: Path,
         x = extract.load(replay)
         meta["mode"] = "demo (saved extraction)" if replay == REFERENCE else f"replay of {replay.name}"
     else:
-        on_step(0, f"Claude ({extract.MODEL}) is reading the memo and financial statements")
+        on_step(0, f"OpenAI {extract.MODEL} is reading the memo and financial statements")
         x, usage = extract.extract(memo, financials)
         meta |= {"mode": "live", **usage}
     (out_dir / "extraction.json").write_text(x.model_dump_json(indent=2))

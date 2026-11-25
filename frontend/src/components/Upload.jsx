@@ -51,7 +51,7 @@ export default function Upload({ health, healthError, onStart, error }) {
       <div className="hero">
         <h2>Screen a new investment opportunity</h2>
         <p>
-          Upload the company's investment memo and financial statements. Claude extracts the data, the rules engine
+          Upload the company's investment memo and financial statements. OpenAI extracts the data, the rules engine
           checks every figure, and the TMS template comes back filled in, with a validation report and a source for each value.
         </p>
       </div>
@@ -75,7 +75,7 @@ export default function Upload({ health, healthError, onStart, error }) {
         <div className="options">
           <div className="segmented" role="tablist">
             <button className={mode === 'live' ? 'active' : ''} disabled={!keyReady} onClick={() => setMode('live')}>
-              Live · Claude reads the PDFs
+              Live · OpenAI reads the PDFs
             </button>
             <button className={mode === 'demo' ? 'active' : ''} onClick={() => setMode('demo')}>
               Demo · saved extraction
@@ -86,7 +86,7 @@ export default function Upload({ health, healthError, onStart, error }) {
           <div className="notice">
             Demo mode skips the AI call and uses a saved, hand-checked extraction of the AgriWave documents, so the uploaded
             PDFs are <strong>not</strong> read. Validation, scoring and template population still run in full.
-            {!keyReady && ' To enable live mode, add ANTHROPIC_API_KEY to backend/.env and restart the backend.'}
+            {!keyReady && ' To enable live mode, add OPENAI_API_KEY to backend/.env and restart the backend.'}
           </div>
         )}
         {healthError && (

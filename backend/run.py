@@ -1,10 +1,10 @@
 """TMS screening automation - command-line entry point.
 
-    python run.py                                  # live: Claude reads the PDFs
+    python run.py                                  # live: OpenAI reads the PDFs
     python run.py --replay output/extraction.json  # re-run steps 2-4 on a saved extraction
     python run.py --demo                           # use the bundled reference extraction (no API key)
 
-Pipeline:  1 Extract (Claude) -> 2 Validate (rules) -> 3 Score (rules) -> 4 Populate (Excel)
+Pipeline:  1 Extract (OpenAI) -> 2 Validate (rules) -> 3 Score (rules) -> 4 Populate (Excel)
 """
 from __future__ import annotations
 

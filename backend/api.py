@@ -50,7 +50,7 @@ def health():
     return {
         "status": "ok",
         "model": MODEL,
-        "api_key_configured": bool(os.getenv("ANTHROPIC_API_KEY", "").strip()),
+        "api_key_configured": bool(os.getenv("OPENAI_API_KEY", "").strip()),
         "samples_available": all(p.exists() for p in SAMPLES.values()),
         "steps": STEPS,
     }
@@ -78,8 +78,8 @@ async def create_job(
 ):
     if mode not in ("live", "demo"):
         raise HTTPException(400, "mode must be 'live' or 'demo'")
-    if mode == "live" and not os.getenv("ANTHROPIC_API_KEY", "").strip():
-        raise HTTPException(400, "ANTHROPIC_API_KEY is not set in backend/.env - add it or use demo mode")
+    if mode == "live" and not os.getenv("OPENAI_API_KEY", "").strip():
+        raise HTTPException(400, "OPENAI_API_KEY is not set in backend/.env - add it or use demo mode")
 
     job_id = uuid.uuid4().hex[:12]
     inp = RUNS / job_id / "inputs"
