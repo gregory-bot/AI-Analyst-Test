@@ -1,0 +1,9 @@
+# Netlify build settings for the React frontend (repo root config).
+# `publish` is relative to `base`, so the site is served from frontend/dist.
+[build]
+  base = "frontend"
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
