@@ -14,6 +14,8 @@ import shutil
 import threading
 import traceback
 import uuid
+
+import openai
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -119,6 +121,13 @@ def _work(job_id: str, paths: dict, mode: str):
                                      RUNS / job_id / "output", replay=REFERENCE if mode == "demo" else None,
                                      on_step=on_step)
         job.update(status="done", step=len(STEPS), message="Complete")
+    except openai.AuthenticationError:
+        job.update(status="error", error="OpenAI rejected the API key - check OPENAI_API_KEY in backend/.env.")
+    except openai.RateLimitError as e:
+        msg = ("Your OpenAI account has no credit - add billing at platform.openai.com/settings/organization/billing, "
+               "or use demo mode." if "credit" in str(e).lower() or "quota" in str(e).lower()
+               else "OpenAI rate limit reached - wait a minute and try again.")
+        job.update(status="error", error=msg)
     except Exception as e:  # surface the reason to the UI, keep the trace in the server log
         traceback.print_exc()
         job.update(status="error", error=f"{type(e).__name__}: {e}")

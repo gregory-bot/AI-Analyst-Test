@@ -16,10 +16,10 @@ export default function Progress({ job, error, onReset }) {
   const failed = job.status === 'error'
 
   return (
-    <div className="card">
+    <div className="card" style={{ maxWidth: 820, margin: "0 auto" }}>
       <div className="cat-head">
         <div>
-          <h2 style={{ fontSize: 20, color: 'var(--red-900)' }}>{failed ? 'Screening failed' : 'Screening in progress…'}</h2>
+          <h2 style={{ fontSize: 20, color: 'var(--ink)' }}>{failed ? 'Screening failed' : 'Screening in progress…'}</h2>
           <p className="muted small" style={{ marginTop: 4 }}>
             {job.mode === 'live' ? 'Live extraction usually takes 1–2 minutes.' : 'Demo mode finishes in a few seconds.'} · {elapsed}s elapsed
           </p>
@@ -42,7 +42,7 @@ export default function Progress({ job, error, onReset }) {
       {(failed || error) && (
         <>
           <div className="notice error">{job.error || error}</div>
-          <div className="actions"><button className="btn btn-ghost" onClick={onReset}>← Back</button></div>
+          <div className="actions"><button className="btn btn-outline" onClick={onReset}>← Back</button></div>
         </>
       )}
     </div>

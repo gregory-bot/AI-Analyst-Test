@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { downloadUrl } from '../api'
 
 const usd = (v) => (v == null ? '–' : v >= 1e6 ? `$${(v / 1e6).toFixed(1)}m` : `$${Math.round(v / 1e3)}k`)
@@ -13,13 +13,13 @@ function Gauge({ value, band }) {
     <div className="gauge">
       <svg width="150" height="150" viewBox="0 0 140 140" role="img" aria-label={`Overall score ${pct(value)}`}>
         <defs>
-          <linearGradient id="g" x1="0" x2="1"><stop offset="0" stopColor="#b91c1c" /><stop offset="1" stopColor="#f59e0b" /></linearGradient>
+          <linearGradient id="g" x1="0" x2="1"><stop offset="0" stopColor="#2563eb" /><stop offset="1" stopColor="#60a5fa" /></linearGradient>
         </defs>
-        <circle cx="70" cy="70" r={r} fill="none" stroke="#fde2e2" strokeWidth="14" />
+        <circle cx="70" cy="70" r={r} fill="none" stroke="#eaf1fe" strokeWidth="14" />
         <circle cx="70" cy="70" r={r} fill="none" stroke="url(#g)" strokeWidth="14" strokeLinecap="round"
           strokeDasharray={`${c * value} ${c}`} transform="rotate(-90 70 70)" />
-        <text x="70" y="72" textAnchor="middle" fontSize="30" fontWeight="700" fill="#5f0f0f">{pct(value)}</text>
-        <text x="70" y="92" textAnchor="middle" fontSize="11" fill="#7a5e5e">TMS score</text>
+        <text x="70" y="72" textAnchor="middle" fontSize="30" fontWeight="700" fill="#0b1220">{pct(value)}</text>
+        <text x="70" y="92" textAnchor="middle" fontSize="11" fill="#64748b">TMS score</text>
       </svg>
       <div className={`gauge-label ${bandClass(value)}`}>{band}</div>
     </div>
@@ -58,7 +58,7 @@ function Overview({ r }) {
             <div className="section-title" style={{ fontSize: 13 }}>Use of proceeds ({usd(r.funding.total)})</div>
             {r.funding.use_of_proceeds.map((u, i) => (
               <div key={i} className="small" style={{ marginBottom: 8 }}>
-                <strong>{usd(u.usd)}</strong> <span className={`method ${u.instrument === 'equity' ? 'm-ai' : 'm-rule'}`}>{u.instrument.replaceAll('_', ' ')}</span>
+                <strong>{usd(u.usd)}</strong> <span className={`method ${u.instrument === 'equity' ? 'm-ai' : 'm-rule'}`} style={{ marginLeft: 6 }}>{u.instrument.replaceAll('_', ' ')}</span>
                 <div className="muted">{u.purpose}</div>
               </div>
             ))}
@@ -193,9 +193,10 @@ function Notes({ r }) {
   )
 }
 
-export default function Results({ job, onReset }) {
+export default function Results({ job, onReset, initialTab }) {
   const r = job.result
-  const [tab, setTab] = useState('overview')
+  const [tab, setTab] = useState(initialTab || 'overview')
+  useEffect(() => { if (initialTab) setTab(initialTab) }, [initialTab])
   const tabs = [
     ['overview', 'Overview'], ['matrix', 'Risk matrix'],
     ['flags', 'Validation', r.flag_counts.HIGH], ['financials', 'Financials'], ['notes', 'DD & notes'],
@@ -208,9 +209,9 @@ export default function Results({ job, onReset }) {
             <span className="muted small">Screening result{job.mode === 'demo' ? ' · demo mode' : ''}</span>
             <div className="company-name">{r.company.name}</div>
             <div className="chips">
-              <span className="chip">{r.company.sector}</span>
+              <span className="chip soft">{r.company.sector}</span>
               {r.company.countries.map((c) => (
-                <span key={c.name} className={`chip ${c.status === 'Planned' ? 'amber' : ''}`}>{c.name} · {c.tier}{c.status === 'Planned' ? ' (planned)' : ''}</span>
+                <span key={c.name} className={`chip ${c.status === 'Planned' ? 'soft' : ''}`}>{c.name} · {c.tier}{c.status === 'Planned' ? ' (planned)' : ''}</span>
               ))}
             </div>
             <div className="kpis">
@@ -221,7 +222,7 @@ export default function Results({ job, onReset }) {
             </div>
             <div className="result-actions">
               <a className="btn btn-primary" href={downloadUrl(job.id)}>⬇ Download TMS Excel</a>
-              <button className="btn btn-ghost" onClick={onReset}>New screening</button>
+              <button className="btn btn-outline" onClick={onReset}>New screening</button>
             </div>
           </div>
           <Gauge value={r.overall} band={r.band} />

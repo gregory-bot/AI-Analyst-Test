@@ -985,7 +985,7 @@
     "check": "Capital efficiency ('net margin per $1m capital')",
     "year": "2024",
     "expected": "21.8% on equity+debt; 31.6% on loan book",
-    "reported": "Over $320,000 in net margin for every $1 million of capital deployed",
+    "reported": "The business generates over $320,000 in net margin for every $1 million of capital deployed, and its gross margin on core products exceeds 40%.",
     "severity": "HIGH",
     "note": "Memo figure only holds if 'capital' = loan book. On total capital employed (equity + borrowings) the business is in the 17.5-30% band. Screen scores on equity + borrowings."
   },
@@ -1003,7 +1003,7 @@
     "check": "FX rate quoted in memo vs template Currency Data (NGN, Dec-2024)",
     "year": "2024",
     "expected": "1,540 (template)",
-    "reported": "1 USD = 1,200 NGN as of December 2024",
+    "reported": "AgriWave prepares its accounts in USD, translating local currency at prevailing rates; 1 USD = 1,200 NGN as of December 2024.",
     "severity": "MEDIUM",
     "note": "Accounts are in USD so no impact on inputs; confirm translation policy and NGN exposure in DD."
   }
