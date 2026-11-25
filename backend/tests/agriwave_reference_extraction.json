@@ -1,0 +1,871 @@
+{
+  "financials": {
+    "currency": "USD",
+    "units": "USD '000",
+    "auditor": "KPMG",
+    "accounting_standard": "IFRS",
+    "income_statement": {
+      "revenue": {
+        "y2021": 4800,
+        "y2022": 6200,
+        "y2023": 8700,
+        "y2024": 12500,
+        "y2025F": 17000
+      },
+      "cost_of_sales": {
+        "y2021": -3168,
+        "y2022": -3968,
+        "y2023": -5133,
+        "y2024": -7000,
+        "y2025F": -9350
+      },
+      "gross_profit": {
+        "y2021": 1632,
+        "y2022": 2232,
+        "y2023": 3567,
+        "y2024": 5500,
+        "y2025F": 7650
+      },
+      "other_operating_income": {
+        "y2021": 30,
+        "y2022": 45,
+        "y2023": 60,
+        "y2024": 80,
+        "y2025F": 90
+      },
+      "selling_distribution_expenses": {
+        "y2021": -320,
+        "y2022": -410,
+        "y2023": -620,
+        "y2024": -900,
+        "y2025F": -1150
+      },
+      "general_admin_expenses": {
+        "y2021": -520,
+        "y2022": -650,
+        "y2023": -840,
+        "y2024": -1300,
+        "y2025F": -1600
+      },
+      "technology_platform_costs": {
+        "y2021": -190,
+        "y2022": -240,
+        "y2023": -307,
+        "y2024": -750,
+        "y2025F": -1200
+      },
+      "ecl_impairment": {
+        "y2021": -132,
+        "y2022": -177,
+        "y2023": -450,
+        "y2024": -450,
+        "y2025F": -650
+      },
+      "ebitda": {
+        "y2021": 500,
+        "y2022": 800,
+        "y2023": 1350,
+        "y2024": 2100,
+        "y2025F": 3000
+      },
+      "depreciation": {
+        "y2021": -90,
+        "y2022": -150,
+        "y2023": -220,
+        "y2024": -300,
+        "y2025F": -380
+      },
+      "amortization": {
+        "y2021": -30,
+        "y2022": -50,
+        "y2023": -80,
+        "y2024": -100,
+        "y2025F": -120
+      },
+      "ebit": {
+        "y2021": 380,
+        "y2022": 600,
+        "y2023": 1050,
+        "y2024": 1700,
+        "y2025F": 2500
+      },
+      "finance_income": {
+        "y2021": 10,
+        "y2022": 10,
+        "y2023": 10,
+        "y2024": 0,
+        "y2025F": 0
+      },
+      "finance_costs": {
+        "y2021": -100,
+        "y2022": -150,
+        "y2023": -250,
+        "y2024": -300,
+        "y2025F": -350
+      },
+      "net_fx_gain_loss": {
+        "y2021": -10,
+        "y2022": -10,
+        "y2023": -10,
+        "y2024": 0,
+        "y2025F": 0
+      },
+      "profit_before_tax": {
+        "y2021": 280,
+        "y2022": 450,
+        "y2023": 800,
+        "y2024": 1400,
+        "y2025F": 2150
+      },
+      "income_tax": {
+        "y2021": -160,
+        "y2022": -150,
+        "y2023": -200,
+        "y2024": -200,
+        "y2025F": -150
+      },
+      "profit_after_tax": {
+        "y2021": 120,
+        "y2022": 300,
+        "y2023": 600,
+        "y2024": 1200,
+        "y2025F": 2000
+      },
+      "gross_margin_pct": {
+        "y2021": 0.34,
+        "y2022": 0.36,
+        "y2023": 0.41,
+        "y2024": 0.44,
+        "y2025F": 0.45
+      }
+    },
+    "balance_sheet": {
+      "ppe_net": {
+        "y2021": 400,
+        "y2022": 420,
+        "y2023": 420,
+        "y2024": 500,
+        "y2025F": 80
+      },
+      "right_of_use_assets": {
+        "y2021": 60,
+        "y2022": 90,
+        "y2023": 100,
+        "y2024": 80,
+        "y2025F": 30
+      },
+      "intangible_assets": {
+        "y2021": 60,
+        "y2022": 120,
+        "y2023": 120,
+        "y2024": 70,
+        "y2025F": 30
+      },
+      "deferred_tax_other_nca": {
+        "y2021": 40,
+        "y2022": 70,
+        "y2023": 60,
+        "y2024": 0,
+        "y2025F": 10
+      },
+      "total_non_current_assets": {
+        "y2021": 560,
+        "y2022": 700,
+        "y2023": 700,
+        "y2024": 650,
+        "y2025F": 150
+      },
+      "cash": {
+        "y2021": 200,
+        "y2022": 350,
+        "y2023": 600,
+        "y2024": 1100,
+        "y2025F": 1800
+      },
+      "trade_other_receivables": {
+        "y2021": 150,
+        "y2022": 180,
+        "y2023": 220,
+        "y2024": 250,
+        "y2025F": 250
+      },
+      "loan_receivables_current": {
+        "y2021": 500,
+        "y2022": 700,
+        "y2023": 1600,
+        "y2024": 2700,
+        "y2025F": 4800
+      },
+      "loan_receivables_non_current": {
+        "y2021": 200,
+        "y2022": 300,
+        "y2023": 600,
+        "y2024": 1100,
+        "y2025F": 1200
+      },
+      "inventories": {
+        "y2021": 180,
+        "y2022": 250,
+        "y2023": 320,
+        "y2024": 350,
+        "y2025F": 300
+      },
+      "other_current_assets": {
+        "y2021": 10,
+        "y2022": 20,
+        "y2023": 60,
+        "y2024": 50,
+        "y2025F": 0
+      },
+      "total_current_assets": {
+        "y2021": 1040,
+        "y2022": 1500,
+        "y2023": 2800,
+        "y2024": 4250,
+        "y2025F": 7150
+      },
+      "total_assets": {
+        "y2021": 1800,
+        "y2022": 2500,
+        "y2023": 4100,
+        "y2024": 6200,
+        "y2025F": 8500
+      },
+      "share_capital_premium": {
+        "y2021": 650,
+        "y2022": 750,
+        "y2023": 950,
+        "y2024": 1250,
+        "y2025F": 1350
+      },
+      "retained_earnings": {
+        "y2021": 150,
+        "y2022": 450,
+        "y2023": 1050,
+        "y2024": 2250,
+        "y2025F": 3650
+      },
+      "total_equity": {
+        "y2021": 800,
+        "y2022": 1200,
+        "y2023": 2000,
+        "y2024": 3500,
+        "y2025F": 5000
+      },
+      "borrowings_long_term": {
+        "y2021": 250,
+        "y2022": 400,
+        "y2023": 700,
+        "y2024": 1300,
+        "y2025F": 1900
+      },
+      "lease_liabilities_long_term": {
+        "y2021": 50,
+        "y2022": 70,
+        "y2023": 80,
+        "y2024": 60,
+        "y2025F": 50
+      },
+      "deferred_income_other_ncl": {
+        "y2021": null,
+        "y2022": null,
+        "y2023": null,
+        "y2024": 30,
+        "y2025F": null
+      },
+      "total_non_current_liabilities": {
+        "y2021": 300,
+        "y2022": 470,
+        "y2023": 780,
+        "y2024": 1390,
+        "y2025F": 1950
+      },
+      "borrowings_short_term": {
+        "y2021": 150,
+        "y2022": 300,
+        "y2023": 500,
+        "y2024": 700,
+        "y2025F": 1100
+      },
+      "trade_payables_accruals": {
+        "y2021": 370,
+        "y2022": 420,
+        "y2023": 600,
+        "y2024": 450,
+        "y2025F": 350
+      },
+      "current_tax_liabilities": {
+        "y2021": 80,
+        "y2022": 80,
+        "y2023": 120,
+        "y2024": 120,
+        "y2025F": 100
+      },
+      "lease_liabilities_short_term": {
+        "y2021": null,
+        "y2022": 30,
+        "y2023": 60,
+        "y2024": 40,
+        "y2025F": null
+      },
+      "other_current_liabilities": {
+        "y2021": 100,
+        "y2022": null,
+        "y2023": 40,
+        "y2024": null,
+        "y2025F": null
+      },
+      "total_current_liabilities": {
+        "y2021": 700,
+        "y2022": 830,
+        "y2023": 1320,
+        "y2024": 1310,
+        "y2025F": 1650
+      },
+      "total_liabilities": {
+        "y2021": 1000,
+        "y2022": 1300,
+        "y2023": 2100,
+        "y2024": 2700,
+        "y2025F": 3600
+      },
+      "total_equity_and_liabilities": {
+        "y2021": 1800,
+        "y2022": 2500,
+        "y2023": 4100,
+        "y2024": 6200,
+        "y2025F": 8600
+      }
+    },
+    "cash_flow": {
+      "profit_before_tax": {
+        "y2021": 280,
+        "y2022": 450,
+        "y2023": 800,
+        "y2024": 1400,
+        "y2025F": 2150
+      },
+      "depreciation_amortization": {
+        "y2021": 120,
+        "y2022": 200,
+        "y2023": 300,
+        "y2024": 400,
+        "y2025F": 500
+      },
+      "net_finance_costs_paid": {
+        "y2021": -90,
+        "y2022": -140,
+        "y2023": -240,
+        "y2024": -300,
+        "y2025F": -350
+      },
+      "ecl_non_cash": {
+        "y2021": 132,
+        "y2022": 177,
+        "y2023": 450,
+        "y2024": 450,
+        "y2025F": 650
+      },
+      "change_trade_receivables": {
+        "y2021": -150,
+        "y2022": -30,
+        "y2023": -40,
+        "y2024": -30,
+        "y2025F": 0
+      },
+      "change_inventories": {
+        "y2021": -180,
+        "y2022": -70,
+        "y2023": -70,
+        "y2024": -30,
+        "y2025F": -50
+      },
+      "change_loan_receivables": {
+        "y2021": -700,
+        "y2022": -300,
+        "y2023": -1200,
+        "y2024": -1600,
+        "y2025F": -2200
+      },
+      "change_payables_other": {
+        "y2021": 300,
+        "y2022": 50,
+        "y2023": 210,
+        "y2024": 140,
+        "y2025F": 250
+      },
+      "income_taxes_paid": {
+        "y2021": -160,
+        "y2022": -150,
+        "y2023": -200,
+        "y2024": -250,
+        "y2025F": -150
+      },
+      "net_cash_operating": {
+        "y2021": -48,
+        "y2022": -263,
+        "y2023": null,
+        "y2024": null,
+        "y2025F": null
+      },
+      "purchase_ppe": {
+        "y2021": -150,
+        "y2022": -200,
+        "y2023": -340,
+        "y2024": -250,
+        "y2025F": -180
+      },
+      "purchase_intangibles": {
+        "y2021": null,
+        "y2022": -20,
+        "y2023": -60,
+        "y2024": -40,
+        "y2025F": -60
+      },
+      "net_cash_investing": {
+        "y2021": -150,
+        "y2022": -220,
+        "y2023": -400,
+        "y2024": -290,
+        "y2025F": -240
+      },
+      "net_proceeds_borrowings": {
+        "y2021": 300,
+        "y2022": 300,
+        "y2023": 500,
+        "y2024": 800,
+        "y2025F": 1000
+      },
+      "proceeds_share_issues": {
+        "y2021": null,
+        "y2022": 100,
+        "y2023": 200,
+        "y2024": 300,
+        "y2025F": 100
+      },
+      "lease_payments": {
+        "y2021": null,
+        "y2022": null,
+        "y2023": null,
+        "y2024": -10,
+        "y2025F": null
+      },
+      "dividends_paid": {
+        "y2021": null,
+        "y2022": null,
+        "y2023": null,
+        "y2024": null,
+        "y2025F": null
+      },
+      "net_cash_financing": {
+        "y2021": 300,
+        "y2022": 400,
+        "y2023": 700,
+        "y2024": 1090,
+        "y2025F": 1100
+      },
+      "net_change_in_cash": {
+        "y2021": 102,
+        "y2022": null,
+        "y2023": 300,
+        "y2024": 600,
+        "y2025F": 860
+      },
+      "cash_beginning": {
+        "y2021": null,
+        "y2022": 200,
+        "y2023": 350,
+        "y2024": 600,
+        "y2025F": 1100
+      },
+      "cash_end": {
+        "y2021": 200,
+        "y2022": 350,
+        "y2023": 600,
+        "y2024": 1100,
+        "y2025F": 1800
+      }
+    },
+    "revenue_mix_notes": "Interest & fees on loan book 65-72%; marketplace commissions 10-13%; advisory & platform services 18-22%."
+  },
+  "memo": {
+    "company_name": {
+      "value": "AgriWave Ltd",
+      "source": "Memo p.1 title"
+    },
+    "business_description": {
+      "value": "Technology-enabled agricultural finance company providing 9-month seasonal input loans and market access (MarketLink produce offtake) to smallholder farmers and agri-SMEs in Nigeria and Ghana; serves 350,000+ farmers via 1,200 field officers and four processor offtake partners.",
+      "source": "Memo p.1 Introduction; Business Model"
+    },
+    "sector": {
+      "value": "Agri-fintech - smallholder input finance & produce offtake",
+      "source": "Memo p.1 Introduction"
+    },
+    "legal_form": {
+      "value": "Private limited company",
+      "source": "Memo p.3 Funding & Capital Structure"
+    },
+    "founded": {
+      "value": "2017, Lagos",
+      "source": "Memo p.1 Introduction"
+    },
+    "headquarters": {
+      "value": "Lagos, Nigeria",
+      "source": "Memo p.1 Introduction"
+    },
+    "operating_countries": [
+      "Nigeria",
+      "Ghana"
+    ],
+    "planned_countries": [
+      "Côte d'Ivoire"
+    ],
+    "primary_country": "Nigeria",
+    "funding_headline": {
+      "usd": 10000000,
+      "source": "Memo p.1 Introduction"
+    },
+    "funding_total_use_of_proceeds": {
+      "usd": 10000000,
+      "source": "Memo p.3 Funding & Capital Structure"
+    },
+    "funding_headline_instrument_wording": {
+      "value": "senior debt",
+      "source": "Memo p.1 Introduction"
+    },
+    "use_of_proceeds": [
+      {
+        "instrument": "senior_secured_debt",
+        "usd": 6000000,
+        "purpose": "Loan book expansion (seasonal agricultural credit)"
+      },
+      {
+        "instrument": "equity",
+        "usd": 2000000,
+        "purpose": "Technology upgrades (AI credit scoring, loan management systems)"
+      },
+      {
+        "instrument": "equity",
+        "usd": 1000000,
+        "purpose": "Côte d'Ivoire market entry"
+      },
+      {
+        "instrument": "equity",
+        "usd": 1000000,
+        "purpose": "General working capital"
+      }
+    ],
+    "security_package": {
+      "value": "Pledge over loan receivables and produce inventory.",
+      "source": "Memo p.3 Funding & Capital Structure"
+    },
+    "collateral_liquidation": {
+      "value": "Collateral can be liquidated within nine months if required.",
+      "source": "Memo p.4 Risk Factors & Security"
+    },
+    "loan_product": {
+      "value": "9-month input loans, monthly interest, principal recovered at harvest via produce offtake (MarketLink).",
+      "source": "Memo p.1 Business Model"
+    },
+    "management": [
+      {
+        "name": "Amina Njoroge",
+        "role": "CEO",
+        "experience": "15 years agri-finance",
+        "prior_employers": "Equity Bank (10 years)"
+      },
+      {
+        "name": "Samuel Otieno",
+        "role": "COO",
+        "experience": "12 years agri-tech",
+        "prior_employers": "Not stated"
+      },
+      {
+        "name": "Fatima Said",
+        "role": "CFO",
+        "experience": "Not stated",
+        "prior_employers": "KPMG"
+      }
+    ],
+    "team_tenure": {
+      "value": "Senior leadership team has worked together for over three years.",
+      "source": "Memo p.2 Management & Governance"
+    },
+    "board_composition": {
+      "value": "Two independent directors, an investor representative from GreenFields Capital, and the founders.",
+      "source": "Memo p.2 Management & Governance"
+    },
+    "governance_practices": {
+      "value": "Quarterly board meetings; formal charter; documented responsibilities for senior team.",
+      "source": "Memo p.2 Management & Governance"
+    },
+    "reputation": {
+      "value": "No adverse findings in recent media or stakeholder reviews (company statement).",
+      "source": "Memo p.2 & p.4"
+    },
+    "shareholders": [
+      {
+        "name": "Founding team",
+        "pct": 0.6,
+        "type": "Founders"
+      },
+      {
+        "name": "GreenFields Capital",
+        "pct": 0.25,
+        "type": "Institutional investor (Series B)"
+      },
+      {
+        "name": "Staff / ESOP",
+        "pct": 0.15,
+        "type": "ESOP"
+      }
+    ],
+    "lenders_and_co_investors": {
+      "value": "Relationships with reputable local banks; supported by institutional investors and local banks 'with significant dry powder'; no overdue debt.",
+      "source": "Memo p.3-4"
+    },
+    "deal_source": null,
+    "founders_named": {
+      "value": "Not named - board includes 'the founders'; founding team holds 60%.",
+      "source": "Memo p.2-3"
+    },
+    "clients_reached": {
+      "value": "350,000+ farmers",
+      "source": "Memo p.1 Introduction"
+    },
+    "women_pct": 0.6,
+    "youth_pct": 0.4,
+    "women_reached": 210000,
+    "youth_reached": 140000,
+    "climate": {
+      "value": "30% of loans fund climate-resilient inputs (drought-resistant seed, solar irrigation); weather index insurance pilot.",
+      "source": "Memo p.3 Impact & ESG; p.4 Growth"
+    },
+    "impact_metrics": [
+      "60% of clients report yield increases >20%",
+      "55% report income growth >15%",
+      "210,000 women and 140,000 youth reached",
+      "1.2m tons of produce marketed through MarketLink in 2024"
+    ],
+    "sdgs": [
+      "SDG 2 Zero Hunger",
+      "SDG 5 Gender Equality",
+      "SDG 13 Climate Action"
+    ],
+    "market_size": {
+      "value": "Nigeria 38m smallholders; Ghana and Côte d'Ivoire another 7m.",
+      "source": "Memo p.4 Growth & Strategic Outlook"
+    },
+    "competitive_position": {
+      "value": "Recurring revenue, exclusive processor contracts, proprietary credit scoring.",
+      "source": "Memo p.4"
+    },
+    "growth_plans": {
+      "value": "Côte d'Ivoire entry 2026; expansion into new Nigerian states; weather index insurance pilot; loan book to $6m in 2025.",
+      "source": "Memo p.2, p.4"
+    },
+    "customer_value_proposition": {
+      "value": "Timely inputs for farmers, repayment via offtake, predictable supply for processors; agronomic advisory.",
+      "source": "Memo p.1 Business Model"
+    },
+    "country_tier_claims": [
+      {
+        "country": "Nigeria",
+        "tier_claimed_in_memo": "Tier 1"
+      },
+      {
+        "country": "Ghana",
+        "tier_claimed_in_memo": "Tier 2"
+      }
+    ],
+    "fx_rate_claim": {
+      "value": "1 USD = 1,200 NGN as of December 2024",
+      "source": "Memo p.2 Financial Overview"
+    },
+    "capital_efficiency_claim": {
+      "value": "Over $320,000 in net margin for every $1 million of capital deployed",
+      "source": "Memo p.3"
+    },
+    "auditor_claim": {
+      "value": "KPMG, IFRS",
+      "source": "Memo p.3"
+    },
+    "memo_financial_table": [
+      {
+        "year": "2021",
+        "revenue": 4800,
+        "ebitda": 500,
+        "net_profit": 120,
+        "gross_margin_pct": 0.34,
+        "total_assets": 1800,
+        "equity": 800,
+        "debt": 400,
+        "loan_book": 700,
+        "cash": 200
+      },
+      {
+        "year": "2022",
+        "revenue": 6200,
+        "ebitda": 800,
+        "net_profit": 300,
+        "gross_margin_pct": 0.36,
+        "total_assets": 2500,
+        "equity": 1200,
+        "debt": 700,
+        "loan_book": 1000,
+        "cash": 350
+      },
+      {
+        "year": "2023",
+        "revenue": 8700,
+        "ebitda": 1350,
+        "net_profit": 600,
+        "gross_margin_pct": 0.41,
+        "total_assets": 4100,
+        "equity": 2000,
+        "debt": 1200,
+        "loan_book": 2200,
+        "cash": 600
+      },
+      {
+        "year": "2024",
+        "revenue": 12500,
+        "ebitda": 2100,
+        "net_profit": 1200,
+        "gross_margin_pct": 0.44,
+        "total_assets": 6200,
+        "equity": 3500,
+        "debt": 2000,
+        "loan_book": 3800,
+        "cash": 1100
+      },
+      {
+        "year": "2025F",
+        "revenue": 17000,
+        "ebitda": 3000,
+        "net_profit": 2000,
+        "gross_margin_pct": 0.45,
+        "total_assets": 8500,
+        "equity": 5000,
+        "debt": 3000,
+        "loan_book": 6000,
+        "cash": 1800
+      }
+    ]
+  },
+  "screen": {
+    "local_founder": "Maybe",
+    "local_founder_rationale": "Lagos-founded company, but founders are not named; CEO's decade at Equity Bank suggests East African background. Confirm founder nationality/residency.",
+    "climate_alignment": "Yes, Adaptation",
+    "climate_rationale": "30% of loans fund drought-resistant seed and solar irrigation; weather index insurance pilot - builds farmer resilience.",
+    "two_x_alignment": "Yes",
+    "two_x_rationale": "Products/services: 60% women clients (210k). Leadership: female CEO and CFO. Ownership/employment/supply chain not disclosed.",
+    "impact_toc": "Yes",
+    "impact_rationale": "Smallholder income and yield gains (60% >20% yield, 55% >15% income), SDG 2/5/13; 350k farmers reached.",
+    "security_workable": "Yes",
+    "security_rationale": "Self-liquidating seasonal receivables with offtake; need intercreditor terms with existing banks ($3m debt FY25) and borrowing-base mechanics.",
+    "qualitative_scores": [
+      {
+        "criterion": "deal_origination",
+        "score": null,
+        "rationale": "Memo does not state how the deal was sourced.",
+        "evidence": "Not stated",
+        "dd_question": "Deal lead to record source."
+      },
+      {
+        "criterion": "breadth",
+        "score": 3,
+        "rationale": "CEO (15y agri-finance), COO (12y agri-tech) and CFO (ex-KPMG) with documented responsibilities.",
+        "evidence": "Memo p.2 Management & Governance",
+        "dd_question": "Verify CVs, incentive/ESOP terms and second-line credit/risk management."
+      },
+      {
+        "criterion": "in_market",
+        "score": 3,
+        "rationale": "Memo states management team is fully in-market.",
+        "evidence": "Memo p.4",
+        "dd_question": "Confirm residency, esp. CEO given Equity Bank background."
+      },
+      {
+        "criterion": "team_churn",
+        "score": 3,
+        "rationale": "SLT has worked together for over three years.",
+        "evidence": "Memo p.2",
+        "dd_question": "Confirm start dates of each SLT member."
+      },
+      {
+        "criterion": "reputation",
+        "score": 3,
+        "rationale": "No adverse findings reported; AHL to run independent web/KYC searches.",
+        "evidence": "Memo p.2, p.4",
+        "dd_question": "Independent KYC/adverse media on company and SLT."
+      },
+      {
+        "criterion": "governance",
+        "score": 3,
+        "rationale": "Two independent directors, investor rep, quarterly meetings, formal charter, documented SLT responsibilities.",
+        "evidence": "Memo p.2",
+        "dd_question": "Obtain board charter, minutes, committee structure."
+      },
+      {
+        "criterion": "stakeholders",
+        "score": 2,
+        "rationale": "GreenFields Capital (Series B, 25%) and local banks; 'significant dry powder' is unverified company claim.",
+        "evidence": "Memo p.3-4",
+        "dd_question": "Confirm GreenFields fund vintage/dry powder and appetite to follow on."
+      },
+      {
+        "criterion": "customer_ltv",
+        "score": 3,
+        "rationale": "Seasonal revolving input loans with repeat borrowers and high retention.",
+        "evidence": "Memo p.1, p.4",
+        "dd_question": "Obtain cohort repeat-borrowing and retention data."
+      },
+      {
+        "criterion": "customer_focus",
+        "score": 2,
+        "rationale": "Value proposition clearly articulated and impact tracked, but no management call yet to test customer engagement.",
+        "evidence": "Memo p.1, p.3",
+        "dd_question": "Management call; customer satisfaction/NPS data."
+      },
+      {
+        "criterion": "competitive_moat",
+        "score": 2,
+        "rationale": "Exclusive processor contracts, proprietary scoring and 1,200 agents add barriers, but agri-lending is contestable.",
+        "evidence": "Memo p.4",
+        "dd_question": "Review processor contracts (exclusivity, term) and competitor landscape."
+      },
+      {
+        "criterion": "new_products_markets",
+        "score": 3,
+        "rationale": "Large, growing smallholder market (45m) with CIV entry and insurance pilot; offtake model creates barriers.",
+        "evidence": "Memo p.4",
+        "dd_question": "Validate CIV entry plan and regulatory licensing."
+      },
+      {
+        "criterion": "funding_requirement",
+        "score": 3,
+        "rationale": "Loan book planned to grow from $3.8m to $6m in one year; $6m debt raise now implies credible capacity for ~$20m debt over 3 years.",
+        "evidence": "Memo p.2-3",
+        "dd_question": "Request 3-year funding plan."
+      },
+      {
+        "criterion": "market_size",
+        "score": 3,
+        "rationale": "Essential agri inputs, multi-country (Nigeria, Ghana, CIV).",
+        "evidence": "Memo p.4",
+        "dd_question": "n/a"
+      }
+    ],
+    "key_dd_areas": [
+      "Revenue vs loan book: reconcile interest income (65-72% of revenue) to a $3-4m loan book - obtain loan tape and revenue split",
+      "Restate financials: P&L subtotals, FY25 balance sheet (out by $100k), retained earnings gap ($600k) and an unreconciled cash flow statement",
+      "Portfolio quality: PAR30/90, write-offs, ECL coverage and the jump in ECL in 2023",
+      "Security: borrowing base, perfection of pledge over receivables/inventory, intercreditor with existing banks",
+      "Funding structure: $10m headline vs $6m debt + $4m equity - confirm equity lead and closing conditionality",
+      "Processor offtake contracts: exclusivity, tenor, concentration (4 processors)",
+      "FX: NGN exposure on USD debt, hedging and translation policy (memo NGN rate differs from market)",
+      "Governance/KYC: founder identity and locality, auditor independence (CFO ex-KPMG, auditor KPMG)"
+    ]
+  }
+}

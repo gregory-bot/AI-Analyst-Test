@@ -1,0 +1,83 @@
+# ----------------------------------------------------------------------------
+# Template cell map - the only file to edit if the TMS template layout changes.
+# Paths refer to fields in src/schema.py. Financial values are as printed
+# (USD '000, costs negative) and are multiplied by `units_multiplier`.
+# ----------------------------------------------------------------------------
+units_multiplier: 1000            # statements are in USD '000; template is in USD
+currency: USD                     # -> Financial Overview!B5
+
+# Template has 4 year-columns (C..F). FY2025 is the company's budget.
+year_columns:
+  C: {source: y2022, label: 2022}
+  D: {source: y2023, label: 2023}
+  E: {source: y2024, label: 2024}
+  F: {source: y2025F, label: 2025}
+
+financial_overview:
+  # row: list of fields to sum (as printed); optional `negate`, `note`
+  6:  {fields: [income_statement.revenue], note: "Total revenue. Note 1: interest & fees 65-72%, marketplace 10-13%, advisory 18-22%."}
+  8:  {fields: [income_statement.cost_of_sales]}
+  11: {fields: [income_statement.other_operating_income]}
+  12: {fields: [income_statement.ecl_impairment]}
+  14: {fields: [income_statement.selling_distribution_expenses, income_statement.general_admin_expenses, income_statement.technology_platform_costs],
+       note: "S&D + G&A + technology & platform costs."}
+  15: {fields: [], note: "Finance income on cash shown net within finance expenses (row 20)."}
+  18: {fields: [income_statement.depreciation, income_statement.amortization], note: "Depreciation (PPE & ROU) + amortisation."}
+  20: {fields: [income_statement.finance_costs, income_statement.finance_income], note: "Finance costs net of interest on cash."}
+  21: {fields: [income_statement.net_fx_gain_loss]}
+  23: {fields: [income_statement.income_tax]}
+  30: {fields: [balance_sheet.ppe_net]}
+  31: {fields: [balance_sheet.right_of_use_assets]}
+  32: {fields: []}
+  33: {fields: [balance_sheet.intangible_assets]}
+  34: {fields: [balance_sheet.deferred_tax_other_nca]}
+  36: {fields: [balance_sheet.cash]}
+  37: {fields: [balance_sheet.inventories]}
+  38: {fields: [balance_sheet.loan_receivables_current, balance_sheet.loan_receivables_non_current],
+       note: "Total loan book (current + non-current) so asset-coverage and RLC rows use the full book, consistent with the company's own presentation."}
+  39: {fields: [balance_sheet.trade_other_receivables, balance_sheet.other_current_assets], note: "Trade & other receivables + prepaids/VAT."}
+  43: {fields: [balance_sheet.borrowings_short_term]}
+  44: {fields: [balance_sheet.trade_payables_accruals]}
+  45: {fields: [balance_sheet.current_tax_liabilities]}
+  46: {fields: [balance_sheet.lease_liabilities_short_term, balance_sheet.other_current_liabilities]}
+  48: {fields: [balance_sheet.borrowings_long_term]}
+  49: {fields: [balance_sheet.lease_liabilities_long_term, balance_sheet.deferred_income_other_ncl]}
+  53: {fields: [balance_sheet.retained_earnings], note: "Retained earnings as reported (includes current-year profit)."}
+  54: {fields: []}
+  55: {fields: [balance_sheet.share_capital_premium], note: "Share capital & premium."}
+  63: {fields: [], note: "No shareholder loans disclosed."}
+  68: {fields: [cash_flow.profit_before_tax]}
+  69: {fields: [cash_flow.depreciation_amortization]}
+  70: {fields: [cash_flow.ecl_non_cash]}
+  71: {fields: [cash_flow.net_finance_costs_paid, cash_flow.income_taxes_paid], note: "Net finance costs paid + income taxes paid, as reported."}
+  72: {fields: [cash_flow.change_trade_receivables, cash_flow.change_inventories, cash_flow.change_loan_receivables, cash_flow.change_payables_other],
+       note: "Includes loan book growth (lending is an operating activity)."}
+  74: {fields: [cash_flow.purchase_ppe]}
+  75: {fields: [cash_flow.purchase_intangibles]}
+  77: {fields: [cash_flow.proceeds_share_issues]}
+  78: {fields: [cash_flow.net_proceeds_borrowings]}
+  79: {fields: [cash_flow.lease_payments]}
+  82: {fields: [cash_flow.cash_beginning],
+       note: "Opening cash hard-coded from the statements (not chained) so each year's Cash Flow Check isolates that year's unreconciled amount."}
+  121: {fields: [income_statement.selling_distribution_expenses], negate: true, note: "Selling & distribution used as CAC proxy (no marketing line disclosed)."}
+
+# TMS Assessment risk-matrix rows (score -> column D, comment -> column E)
+risk_matrix_rows:
+  deal_origination: 23
+  breadth: 24
+  in_market: 25
+  team_churn: 26
+  reputation: 27
+  governance: 28
+  stakeholders: 29
+  customer_ltv: 32
+  revenue_growth: 33
+  profitability: 34
+  unit_profitability: 35
+  capital_efficiency: 36
+  customer_focus: 37
+  competitive_moat: 38
+  new_products_markets: 41
+  funding_requirement: 42
+  use_of_leverage: 43
+  market_size: 44
