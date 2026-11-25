@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import json
-import unicodedata
 import warnings
 from collections import Counter
 from datetime import datetime
@@ -75,7 +74,7 @@ def run_pipeline(memo: Path, financials: Path, template: Path, out_dir: Path,
 def _summary(x, flags, rules, fixes, gating, meta, debt_ask, eq_raise, xlsx) -> dict:
     """JSON-friendly view of the run for the web UI / console."""
     m, s = x.memo, x.screen
-    norm = lambda c: unicodedata.normalize("NFKD", c).encode("ascii", "ignore").decode().strip().lower()
+    norm = validate._norm
 
     scores = [{"criterion": q.criterion, "score": q.score, "method": "AI judgement", "rationale": q.rationale,
                "evidence": q.evidence,

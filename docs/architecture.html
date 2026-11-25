@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>TMS Screening Architecture</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --primary: #2563eb; --primary-soft: #eaf1fe; --ink: #0b1220; --muted: #64748b; --border: #dbe3ef;
+    --ai: #7c3aed; --ai-soft: #f1ebfe; --good: #16a34a; --good-soft: #e3f8ea; --bg: #f6f8fc;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: Inter, system-ui, sans-serif; background: #fff; color: var(--ink); }
+  #diagram { width: 1600px; padding: 48px 56px 40px; background: #fff; }
+  h1 { font-size: 34px; font-weight: 800; letter-spacing: -.02em; margin: 0; }
+  .sub { color: var(--muted); font-size: 17px; margin-top: 8px; }
+  .row { display: grid; grid-template-columns: 250px 70px 300px 70px 1fr 70px 280px; align-items: stretch; margin-top: 40px; }
+  .col { display: flex; flex-direction: column; gap: 16px; }
+  .card { background: #fff; border: 2px solid var(--border); border-radius: 20px; padding: 20px 22px; }
+  .card.hl { border-color: var(--primary); box-shadow: 0 10px 30px rgba(37,99,235,.12); }
+  .tag { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+         color: var(--primary); background: var(--primary-soft); padding: 4px 10px; border-radius: 999px; }
+  .tag.ai { color: var(--ai); background: var(--ai-soft); }
+  .tag.good { color: var(--good); background: var(--good-soft); }
+  .card h3 { margin: 12px 0 4px; font-size: 21px; font-weight: 700; }
+  .card .host { color: var(--muted); font-size: 14px; font-weight: 500; }
+  .card ul { margin: 12px 0 0; padding-left: 18px; color: #334155; font-size: 15px; line-height: 1.6; }
+  .icon { width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; background: var(--primary-soft); color: var(--primary); }
+  .icon.ai { background: var(--ai-soft); color: var(--ai); }
+  .icon.good { background: var(--good-soft); color: var(--good); }
+  .doc { display: flex; gap: 12px; align-items: center; padding: 12px 14px; border: 1.5px dashed #b9c6da; border-radius: 14px; background: var(--bg); font-size: 15px; font-weight: 600; }
+  .doc small { display: block; color: var(--muted); font-weight: 500; font-size: 13px; }
+  .arrow { position: relative; display: flex; align-items: center; justify-content: center; }
+  .arrow svg { width: 70px; height: 40px; }
+  .arrow span { position: absolute; top: calc(50% + 22px); font-size: 12.5px; font-weight: 600; color: var(--primary); text-align: center; width: 110px; line-height: 1.3; }
+  .backend { background: linear-gradient(180deg, #f8fbff, #fff); }
+  .pipe { display: grid; gap: 10px; margin-top: 16px; }
+  .step { display: grid; grid-template-columns: 38px 1fr auto; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; border: 1.5px solid var(--border); background: #fff; }
+  .num { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font-weight: 800; color: #fff; background: var(--primary); }
+  .step.ai { border-color: #cdb8fb; background: #fbf9ff; }
+  .step.ai .num { background: var(--ai); }
+  .step b { font-size: 16px; } .step p { margin: 2px 0 0; font-size: 13.5px; color: var(--muted); line-height: 1.4; }
+  .down { text-align: center; color: #94a3b8; font-size: 18px; line-height: 1; margin: -4px 0; }
+  .openai { margin-top: 14px; display: flex; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 14px; background: var(--ai-soft); border: 1.5px solid #d9c9fd; font-size: 14px; }
+  .footer { margin-top: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .strip { border-radius: 16px; padding: 16px 20px; background: var(--bg); border: 1.5px solid var(--border); font-size: 15px; display: flex; gap: 14px; align-items: center; color: #334155; }
+  .legend { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+  .sw { display: inline-flex; gap: 8px; align-items: center; font-weight: 600; }
+  .sw i { width: 14px; height: 14px; border-radius: 4px; display: inline-block; }
+</style>
+</head>
+<body>
+<div id="diagram">
+  <h1>TMS Screening Assistant: solution architecture</h1>
+  <div class="sub">From an investment memo and audited accounts to a validated, scored screening template. AI reads; deterministic rules do the maths.</div>
+
+  <div class="row">
+    <!-- 1. User & inputs -->
+    <div class="col">
+      <div class="card">
+        <div class="icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
+        <h3>Investment analyst</h3>
+        <div class="host">Any web browser, desktop or mobile</div>
+      </div>
+      <div class="doc"><span>📄</span><div>Investment memo<small>PDF</small></div></div>
+      <div class="doc"><span>📊</span><div>Audited financials + budget<small>PDF</small></div></div>
+      <div class="doc"><span>🗂️</span><div>TMS screening template<small>Excel (optional, standard one built in)</small></div></div>
+    </div>
+
+    <div class="arrow"><svg viewBox="0 0 70 40"><path d="M4 20h54" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/><path d="M50 10l14 10-14 10" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span>upload</span></div>
+
+    <!-- 2. Frontend -->
+    <div class="col">
+      <div class="card hl" style="flex:1">
+        <span class="tag">Frontend</span>
+        <h3>Web app</h3>
+        <div class="host">React + Vite · hosted on <b>Netlify</b></div>
+        <ul>
+          <li>Home, how-it-works and tools</li>
+          <li>Drag-and-drop document upload</li>
+          <li>Live progress of the 4 steps</li>
+          <li>Results dashboard: score, risk matrix, red flags, financials, DD list</li>
+          <li>One-click Excel download</li>
+        </ul>
+        <div style="margin-top:14px;font-size:13px;color:var(--muted)">tms-screening.netlify.app</div>
+      </div>
+    </div>
+
+    <div class="arrow"><svg viewBox="0 0 70 40"><path d="M4 14h54" stroke="#2563eb" stroke-width="4" stroke-linecap="round"/><path d="M50 4l14 10-14 10" fill="none" stroke="#2563eb" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><path d="M66 30H12" stroke="#94a3b8" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 6"/></svg><span>HTTPS<br/>REST API</span></div>
+
+    <!-- 3. Backend -->
+    <div class="col">
+      <div class="card hl backend" style="flex:1">
+        <span class="tag">Backend</span>
+        <h3>Screening API &amp; pipeline</h3>
+        <div class="host">Python · FastAPI · hosted on <b>Render</b> · tms-screening-api.onrender.com</div>
+        <div class="pipe">
+          <div class="step ai"><div class="num">1</div><div><b>Extract</b><p>Reads both PDFs. Copies every figure as printed, with a source for each fact, and scores 13 judgement criteria.</p></div><span class="tag ai">AI</span></div>
+          <div class="down">▼</div>
+          <div class="step"><div class="num">2</div><div><b>Validate</b><p>112 checks: subtotals, links between the 3 statements, memo vs accounts, AHL country tiers, plausibility.</p></div><span class="tag">Rules</span></div>
+          <div class="down">▼</div>
+          <div class="step"><div class="num">3</div><div><b>Score</b><p>Growth, profitability, unit economics, capital efficiency and leverage on the template's own thresholds.</p></div><span class="tag">Rules</span></div>
+          <div class="down">▼</div>
+          <div class="step"><div class="num">4</div><div><b>Populate</b><p>Writes the TMS template using a configurable cell map, fixes template bugs, adds audit sheets.</p></div><span class="tag">Rules</span></div>
+        </div>
+        <div class="openai">
+          <div class="icon ai" style="width:38px;height:38px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z"/></svg></div>
+          <div><b>OpenAI API</b> · GPT-5.5 with Structured Outputs. Returns JSON that must match a strict schema, then is re-checked locally.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="arrow"><svg viewBox="0 0 70 40"><path d="M4 20h54" stroke="#16a34a" stroke-width="4" stroke-linecap="round"/><path d="M50 10l14 10-14 10" fill="none" stroke="#16a34a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg><span style="color:#16a34a">results</span></div>
+
+    <!-- 4. Outputs -->
+    <div class="col">
+      <div class="card">
+        <div class="icon good"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div>
+        <h3>Completed TMS Excel</h3>
+        <ul>
+          <li>Financial Overview &amp; TMS Assessment filled in</li>
+          <li><b>Extraction Log</b>: every value + its source</li>
+          <li><b>Validation Flags</b>: every check, by severity</li>
+          <li><b>Automation Notes</b>: structure, DD areas, fixes</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="icon good"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18"/><path d="M8 17v-5M13 17V8M18 17v-3"/></svg></div>
+        <h3>Screening dashboard</h3>
+        <ul>
+          <li>Overall TMS score &amp; verdict</li>
+          <li>Risk matrix with rationale</li>
+          <li>Red flags &amp; DD questions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="strip">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="#0b1220"><path d="M12 .5a12 12 0 0 0-3.8 23.4c.6.1.8-.3.8-.6v-2c-3.3.7-4-1.6-4-1.6-.6-1.4-1.4-1.8-1.4-1.8-1.1-.8.1-.7.1-.7 1.2.1 1.9 1.3 1.9 1.3 1.1 1.8 2.9 1.3 3.6 1 .1-.8.4-1.3.8-1.6-2.7-.3-5.5-1.3-5.5-6 0-1.3.5-2.4 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17.3 4.7 18.3 5 18.3 5c.7 1.7.3 2.9.1 3.2.8.8 1.2 1.9 1.2 3.2 0 4.6-2.8 5.6-5.5 5.9.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6A12 12 0 0 0 12 .5z"/></svg>
+      <div><b>GitHub</b> holds the code. Every push auto-deploys the frontend to <b>Netlify</b> and the backend to <b>Render</b>. The API key lives only in Render's settings.</div>
+    </div>
+    <div class="strip legend">
+      <span class="sw"><i style="background:#7c3aed"></i>AI step: reading &amp; judgement</span>
+      <span class="sw"><i style="background:#2563eb"></i>Deterministic rules: traceable maths</span>
+      <span class="sw"><i style="background:#16a34a"></i>Outputs</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

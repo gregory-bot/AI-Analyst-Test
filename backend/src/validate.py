@@ -203,4 +203,6 @@ def run(x: Extraction, gating: dict[str, str]) -> list[Flag]:
 
 def _norm(s: str) -> str:
     import unicodedata
+    # Curly quotes/apostrophes ("Côte d’Ivoire") are mapped to plain ones before stripping accents.
+    s = s.translate(str.maketrans({"\u2019": "'", "\u2018": "'", "\u02bc": "'", "\u201c": '"', "\u201d": '"'}))
     return unicodedata.normalize("NFKD", s).encode("ascii", "ignore").decode().strip().lower()
