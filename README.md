@@ -6,12 +6,16 @@
 |---|---|
 | 🌐 **Live app** | **https://tms-screening.netlify.app** |
 | ⚙️ **Backend API** | **https://tms-screening-api.onrender.com** (health check: [`/api/health`](https://tms-screening-api.onrender.com/api/health)) |
-| 🎬 **Demo video** | [`docs/demo/TMS_Screening_Demo.mp4`](docs/demo/TMS_Screening_Demo.mp4) (under 2 minutes, a live run end to end) |
+| 🎬 **Demo video** | **https://youtu.be/tPE6HUpi7Tw** (under 2 minutes, a live run end to end; also in [`docs/demo/`](docs/demo/TMS_Screening_Demo.mp4)) |
 | 📄 **Sample output** | [`backend/output/AgriWave_Ltd_TMS_Screening.xlsx`](backend/output/AgriWave_Ltd_TMS_Screening.xlsx) |
 
 Built for the **AHL Venture Partners AI Analyst technical case study**. The sample company is *AgriWave Ltd*; all data is fictitious.
 
-> **Note:** the backend runs on Render's free plan, which sleeps after 15 minutes without use. If the app shows *"Backend offline"*, wait about 50 seconds and refresh.
+### ▶️ Watch the demo
+
+[![Watch the TMS Screening Assistant demo on YouTube](https://img.youtube.com/vi/tPE6HUpi7Tw/maxresdefault.jpg)](https://youtu.be/tPE6HUpi7Tw)
+
+*A live, end-to-end run on the deployed app: uploading the AgriWave documents, scanning with GPT-5.5, reviewing the results and downloading the completed TMS Excel.*
 
 ---
 
