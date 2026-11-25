@@ -37,7 +37,9 @@ The analyst's time goes on **judgement and due diligence**, not data entry.
 | Extraction accuracy (347 figures and facts, compared with a hand-checked reference) | **347 / 347 correct (100%)** |
 | Time from upload to completed template | **about 90 seconds** |
 | Checks run on the source documents | **112** (84 passed, 4 medium, **24 high-severity issues**) |
-| Overall TMS score | **82%: "Actively cultivate relationship"** |
+| Overall TMS score | **82–90% across live runs: always "Actively cultivate relationship"** |
+
+*Why the score varies slightly:* all figures and rule-based scores are identical on every run. Only the AI's judgement on a few qualitative criteria (e.g. team breadth, reputation) moves by one point, depending on how sceptical it is of claims made only in the company's own memo.
 
 **Issues the tool caught in the AgriWave documents** (the full list is in the *Validation* tab and the Excel *Validation Flags* sheet):
 
