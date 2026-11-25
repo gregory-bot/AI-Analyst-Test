@@ -84,6 +84,19 @@ cd backend
 | `GET` | `/api/jobs/{id}` | Poll status, current step and (when finished) the full results |
 | `GET` | `/api/jobs/{id}/download` | Download the completed TMS Excel file |
 
+## Deploying the backend to Render
+
+`render.yaml` in the repo root is a Render Blueprint for the API.
+
+1. Push the repo to GitHub. Then, in Render: **New → Blueprint**, select the repo, and click **Apply**.
+2. When prompted, set the two secret variables:
+   - `OPENAI_API_KEY`: your OpenAI key
+   - `ALLOWED_ORIGINS`: the frontend URL(s), comma-separated (e.g. `https://your-app.netlify.app,http://localhost:5173`)
+3. Wait for the deploy to finish, then open `https://<service>.onrender.com/api/health`. It should return `"api_key_configured": true`.
+4. Point the frontend at the API by setting `VITE_API_URL=https://<service>.onrender.com` (in `frontend/.env` locally, or in your Netlify/Vercel environment variables) and rebuild.
+
+Render runs `pip install -r backend/requirements.txt` and then `cd backend && uvicorn api:app --host 0.0.0.0 --port $PORT` on Python 3.12. On the free plan the service sleeps after 15 minutes idle, so the first request takes about 50 seconds to wake it. Jobs and generated files live in memory and on temporary disk, so they are lost when the service restarts.
+
 ## Outputs
 - **Completed TMS template**: Financial Overview and TMS Assessment filled in. Excel recalculates every formula when the file is opened.
 - **Extraction Log** sheet: every value written, with its source and the cell it went to.
