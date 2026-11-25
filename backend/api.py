@@ -41,7 +41,9 @@ MAX_BYTES = 25 * 1024 * 1024
 app = FastAPI(title="AHL TMS Screening API")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[o.strip() for o in os.getenv("ALLOWED_ORIGINS", "http://localhost:5173").split(",")],
+    # Local dev + the deployed Netlify site are always allowed; ALLOWED_ORIGINS adds more.
+    allow_origins=sorted({"http://localhost:5173", "https://tms-screening.netlify.app",
+                          *(o.strip().rstrip("/") for o in os.getenv("ALLOWED_ORIGINS", "").split(",") if o.strip())}),
     allow_methods=["*"], allow_headers=["*"],
 )
 JOBS: dict[str, dict] = {}
