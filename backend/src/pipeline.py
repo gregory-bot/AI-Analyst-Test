@@ -78,7 +78,9 @@ def _summary(x, flags, rules, fixes, gating, meta, debt_ask, eq_raise, xlsx) -> 
     norm = lambda c: unicodedata.normalize("NFKD", c).encode("ascii", "ignore").decode().strip().lower()
 
     scores = [{"criterion": q.criterion, "score": q.score, "method": "AI judgement", "rationale": q.rationale,
-               "evidence": q.evidence, "dd": q.dd_question} for q in s.qualitative_scores]
+               "evidence": q.evidence,
+               "dd": "" if q.dd_question.strip().lower() in ("n/a", "none", "-") else q.dd_question}
+              for q in s.qualitative_scores]
     scores += [{"criterion": r.criterion, "score": r.score, "method": "Rule-based", "rationale": r.rationale,
                 "evidence": r.evidence, "dd": ""} for r in rules]
     for sc in scores:
